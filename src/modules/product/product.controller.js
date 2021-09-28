@@ -3,7 +3,9 @@ let productModel = require('./model/product.model');
   
   exports.list = async (req,res,next) =>{
     try{
-      const data = await productModel.find({},{__v:0});
+      const data = await productModel.find({},{__v:0},{sort:{
+        'createdAt':-1
+      }});
       return res.json(data);
     }
     catch(e){next(e)}
