@@ -12,9 +12,15 @@ exports.init= (app)=> {
     const HTTP_SERVER_ERROR = 500;
     app.use(function(err, req, res, next) {
     //check error is mongoose validation error
+  
     if(err.name && err.name == "ValidationError") {
         const formattedError = formattedMongooseValidatorErrorFunc(err);
         return res.status(400).json({errors:formattedError});
+    }
+    // moongoose unqiue validator error
+    else if(err.code && err.code ==11000) {
+        let formattedErr = Object.entries(err.keyValue)[0];
+        return res.status(400).json({errors:{[formattedErr[0]]: formattedErr[1]+' '+'exists already'}});
     }
      return res.status(err.status || HTTP_SERVER_ERROR).end();
     });
