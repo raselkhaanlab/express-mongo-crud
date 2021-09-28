@@ -11,6 +11,23 @@ exports.init= (app)=> {
     //global error handler
     const HTTP_SERVER_ERROR = 500;
     app.use(function(err, req, res, next) {
-     res.status(err.status || HTTP_SERVER_ERROR).end();
+    //check error is mongoose validation error
+    if(err.name && err.name == "ValidationError") {
+        const formattedError = formattedMongooseValidatorErrorFunc(err);
+        return res.status(400).json({errors:formattedError});
+    }
+     return res.status(err.status || HTTP_SERVER_ERROR).end();
     });
 };
+
+//mongoose validation error formating
+function formattedMongooseValidatorErrorFunc(err) {
+    let errArr= err.toString().replace('ValidationError: ', '').split(',');
+    errArr = errArr.map((item)=>{
+         let itemArray =item.split(":");
+         let key = itemArray[0].toLowerCase().trim();
+         let value = itemArray[1].toLowerCase().replace('path','').trim();
+         return [key,value];
+    });
+    return Object.fromEntries(errArr);
+}
