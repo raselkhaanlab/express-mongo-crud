@@ -48,6 +48,26 @@ let productModel = require('./model/product.model');
     }
   };
 
+  exports.delete = async (req,res,next) =>{
+    try{
+      const id = req.params.id;
+      const isValidId=mongoose.isValidObjectId(id);
+      if(!isValidId) {
+        return res.status(400).json({errors:`${id} is not a valid id` })
+      }
+      let data=await productModel.findByIdAndDelete(id);
+      if(data) {
+        return res.status(204).json();
+      }
+       return res.status(404).json();
+      
+    }
+    catch(e){
+      console.log(e);
+      next(e);
+    }
+  };
+
 //save product
 
 exports.save = async (req,res,next) =>{
