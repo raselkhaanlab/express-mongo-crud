@@ -85,21 +85,20 @@ function addProductHandler(e) {
     .done(function(msg,statusText,xhr){  
         if(msg && msg.data) {
 
-            productName.value = "";
+            productName.val("");
             productName.removeClass("is-invalid");
             productName.next().text('');
 
-            productUnitPrice.value ="";
+            productUnitPrice.val("");
             productUnitPrice.removeClass("is-invalid");
             productUnitPrice.next().text('');
 
-            totalProduct.value=""
+            totalProduct.val("");
             totalProduct.removeClass("is-invalid");
             totalProduct.next().text('');
-
-            $("#add-product-modal").modal('hide');
             getProductAndAddtoTable();
             $.notify('save successfully','success');
+            $("#add-product-modal").modal('hide');
         }
     })
     .fail(function(xhr, status, error) {
@@ -128,7 +127,7 @@ function addProductHandler(e) {
                     totalProduct.next().text(err.total_product);
                 }
                 else {
-                    totalProduct.addClass("is-invalid");
+                    totalProduct.removeClass("is-invalid");
                     totalProduct.next().text('');
                 }
             }
@@ -187,6 +186,7 @@ $(document).on('click','.update',function(e){
     $.get(url)
     .done(function(msg,statusText,xhr){
         if(msg && msg.data) {
+            $("#display-product-id").text("#"+msg.data._id);
             $('#productName-update').val(msg.data.product_name);
             $('#productUnitPrice-update').val(msg.data.unit_price);
             $('#totalProduct-update').val(msg.data.total_product);
