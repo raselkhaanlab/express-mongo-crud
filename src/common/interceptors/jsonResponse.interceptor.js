@@ -19,7 +19,7 @@ function convert(req,res,args) {
         return_data.statusCode = res.statusCode;
     }
 
-    if(args.errors) {
+    if(args && args.errors) {
         return_data.errors = args.errors;
         delete args.errors;
     }
