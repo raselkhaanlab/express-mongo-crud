@@ -18,7 +18,14 @@ function convert(req,res,args) {
     else {
         return_data.statusCode = res.statusCode;
     }
-    return_data.data = args;
+
+    if(args.errors) {
+        return_data.errors = args.errors;
+        delete args.errors;
+    }
+    else{
+        return_data.data = args;
+    }
     return JSON.stringify(return_data);
 }
 
