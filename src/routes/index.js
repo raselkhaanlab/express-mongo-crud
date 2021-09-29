@@ -5,7 +5,7 @@ const productRoute = require('../modules/product/product.routes');
 exports.init= (app)=> {
     app.use('/api/v1.0/products',productRoute);
     app.get('/favicon.ico', (req, res) => {return res.status(204).end()});
-    app.get('/',(req,res)=>res.render('index'));
+    app.get('/',(req,res)=>res.render('home'));
     
 
     //global error handler
@@ -22,7 +22,10 @@ exports.init= (app)=> {
         let formattedErr = Object.entries(err.keyValue)[0];
         return res.status(400).json({errors:{[formattedErr[0]]: formattedErr[1]+' '+'exists already'}});
     }
-     return res.status(err.status || HTTP_SERVER_ERROR).end();
+    else{
+    console.log(err);
+    return res.status(err.status || HTTP_SERVER_ERROR).end();
+    }
     });
 };
 

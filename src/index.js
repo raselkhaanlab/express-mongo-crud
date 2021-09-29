@@ -6,6 +6,7 @@ const routes =require('./routes');
 const mongoose = require("mongoose");
 
 const mongoUrl= conf.mongodb.url;
+mongoose.set('runValidators', true);
 mongoose.connect(mongoUrl, {useNewUrlParser: true,serverSelectionTimeoutMS:15000});
 mongoose.connection
 .once('open',()=>{
