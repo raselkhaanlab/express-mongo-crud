@@ -45,7 +45,6 @@ let productModel = require('./model/product.model');
       return res.status(404).json();
     }
     catch(e){
-      console.log(e);
       next(e);
     }
   };

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include("./../includes/head") -%>
+  </head>
+  <body>
+    <div class="container">
+        <div class="heading-section">
+            <h1 class="mt-2 mb-5 p-2 text-center">
+                Express mongodb crud application
+            </h1>
+        </div>
+        <div class="add-button d-flex justify-content-end my-2">
+        <button type="button" class="btn btn-info mr-2" id="refresh"> refresh</button>
+            <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-product-modal">
+            Add new product
+        </button>
+        </div>
+        <!-- list  -->
+        <%- include('./partials/list') -%>
+        <!-- save modal -->
+        <%- include('./partials/save-modal') -%>
+        <!-- update modal -->
+        <%- include('./partials/update-modal') -%>        
+    </div>
+    <%- include('./../includes/footer') -%>
+    <%- include('./../includes/footerJs') -%>
+  </body>
+</html>

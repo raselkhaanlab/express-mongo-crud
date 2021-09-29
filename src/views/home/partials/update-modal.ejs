@@ -1,0 +1,49 @@
+<!-- update modal -->
+<div class="modal fade" id="update-product-modal" tabindex="-2" role="dialog" aria-labelledby="update-product" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-success" id="update-product-modal-title">Update product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <h4 class="text-success mx-auto" id="display-product-id"></h4>
+        <div class="modal-body">
+            <form id='update-product-form'>
+            <div class="form-group">
+                <label for="productName-update">Product name</label>
+                <input name="product_name" type="text" class="form-control" id="productName-update" placeholder="enter product name">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productUnitPrice-update">Product unit price</label>
+                <input name="unit_price" type="number"  step="2" class="form-control" id="productUnitPrice-update" placeholder="enter product unit price">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="totalProduct-update">Total product</label>
+                <input name="total_product" type="number" step="0" class="form-control" id="totalProduct-update" placeholder="enter total product ">
+                <div class="invalid-feedback">
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+            </div>
+            
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="product-update-btn">Save changes</button>
+        </div>
+        </div>
+    </div>
+</div>
