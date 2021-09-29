@@ -8,11 +8,13 @@ const productSchema = new mongoose.Schema({
     },
     unit_price:{
         type:Number,
-        required:true
+        required:true,
+        min:1
     },
     total_product:{
         type     : Number,
         required:true,
+        min:1,
         validate : {
         validator : Number.isInteger,
         message   : '{VALUE} is not an integer value'
