@@ -78,7 +78,8 @@ updateBtn.click(function(e){
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Your work has been updated',
+                title:'Updated',
+                text: 'Your work has been updated',
                 showConfirmButton: false,
                 timer: 2500
               });
@@ -120,7 +121,8 @@ updateBtn.click(function(e){
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
-                    title: 'update fail',
+                    title:'Update Failed',
+                    text: 'data update failed',
                     showConfirmButton: false,
                     timer: 2500
                   });
@@ -149,7 +151,8 @@ function addProductHandler(e) {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Your work has been saved',
+                title: 'Saved',
+                text:'Your work has been saved successfuly',
                 showConfirmButton: false,
                 timer: 2500
               });
@@ -192,7 +195,8 @@ function addProductHandler(e) {
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'save unsuccessful',
+                title:'Save Failed',
+                text: 'save unsuccessful',
                 showConfirmButton: false,
                 timer: 2500
               })
@@ -262,7 +266,7 @@ $(document).on('click','.delete',function(e){
                     swalWithBootstrapButtons.fire(
                         {
                             position: 'center',
-                            title:'deleted',
+                            title:'Deleted',
                             icon: 'success',
                             text: 'you docuemt has been deleted',
                             showConfirmButton: false,
@@ -275,7 +279,7 @@ $(document).on('click','.delete',function(e){
                     swalWithBootstrapButtons.fire(
                         {
                             position: 'center',
-                            title:'failed',
+                            title:'Delete Failed',
                             icon: 'error',
                             text: 'document deletation goes wrong',
                             showConfirmButton: false,
@@ -291,7 +295,7 @@ $(document).on('click','.delete',function(e){
           swalWithBootstrapButtons.fire(
             {
                 position: 'center',
-                title:'canceled',
+                title:'Delete Canceled',
                 icon: 'error',
                 text: 'you docuemt is not deleted :)',
                 showConfirmButton: false,
