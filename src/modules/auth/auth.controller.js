@@ -1,5 +1,6 @@
 const userModel = require('./../user/model/user.model');
 const bcrypt = require('bcryptjs');
+const utils = require("util");
 
 exports.login=async(req,res,next) =>{
   
@@ -14,7 +15,8 @@ exports.login=async(req,res,next) =>{
     req.flash('error','sorry! Incrrect email or password');
     return res.redirect('back');
   }
-
+  const regenerate = utils.promisify(req.session.regenerate).bind(req.session);
+  await regenerate();
   if(req.body.remember_me) {
     req.session.remember_me = {
       email:req.body.email,
@@ -41,18 +43,17 @@ exports.registration = async(req,res,next)=>{
 
 exports.logout = async (req,res,next) =>{
   const rememberMe = req.session && req.session.remember_me;
-  req.session.regenerate((err)=>{
-    if(err) {
-      next(err);
-    }
+  try{
+    const regenerate = utils.promisify(req.session.regenerate).bind(req.session);
+    await regenerate();
     if(rememberMe) {
       req.session.email = rememberMe.email;
       req.session.password = rememberMe.password;
     }
     req.flash('success',"Logout successful,Hope you will come back soon :)");
     return res.redirect("/");
-  });
-  // return res.redirect("/");
+  }
+  catch(e) {next(e)}
 }
 
 
