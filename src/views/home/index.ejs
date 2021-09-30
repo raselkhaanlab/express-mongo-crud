@@ -1,30 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("./../includes/head") -%>
-  </head>
-  <body>
+<head>
+    <%- include("./../includes/head.ejs") -%>
+    <style>
+        .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-        <div class="heading-section">
-            <h1 class="mt-2 mb-5 p-2 text-center">
-                Express mongodb crud application
-            </h1>
+        <div class="text-center">
+            <%- include("./../includes/flash.ejs") -%>
+            <form class="form-signin" method="POST" action="/auth/login">
+                <img class="mb-4" src="/img/login.svg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input name="email" type="email" id="inputEmail" class="form-control mb-2" value="<%= email %>" placeholder="Email address" required="" autofocus="">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input  name="password" type="password" id="inputPassword" class="form-control" value="<%= password %>" placeholder="Password" required="">
+                <div class="checkbox d-flex justify-content-end">
+                  <label >
+                    <input  type="checkbox" name="remember_me"> Remember me
+                  </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#registration-modal">
+                    Don't have a account 
+                </button>
+              </form> 
         </div>
-        <div class="add-button d-flex justify-content-end my-2">
-        <button type="button" class="btn btn-info mr-2" id="refresh"> refresh</button>
-            <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-product-modal">
-            Add new product
-        </button>
-        </div>
-        <!-- list  -->
-        <%- include('./partials/list') -%>
-        <!-- save modal -->
-        <%- include('./partials/save-modal') -%>
-        <!-- update modal -->
-        <%- include('./partials/update-modal') -%>        
+        <%- include('./partials/registration.modal.ejs') -%>
+        <%- include('./../includes/footer.ejs') -%>
     </div>
-    <%- include('./../includes/footer') -%>
-    <%- include('./../includes/footerJs') -%>
-  </body>
+    
+    <%- include('./../includes/footerJs.ejs') -%>
+    <script src="/js/registration.js"></script>
+</body>
 </html>

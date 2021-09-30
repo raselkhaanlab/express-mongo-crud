@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">
+      <i class="far fa-grin-wink text-success fa-2x"></i>
+    </a>
+    <div class="btn-group">
+        <button type="button" style="background-color: transparent; color: inherit; border: 0; outline: none;" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= locals.user.first_name +' '+locals.user.last_name %>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/users/profile">Profile</a>
+          <a class="dropdown-item" href="/users/change-password">change password</a>
+          <form class="dropdown-item" action="/auth/logout" method="POST"> <button style="background: none; border: none; padding:0" type="submit"> Logout</button></form>
+        </div>
+      </div>
+  </nav>
