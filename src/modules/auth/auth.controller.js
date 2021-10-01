@@ -60,7 +60,7 @@ exports.preRegistration = async (req,res,next) =>{
       <p> <a href="${link}">${link}</a> </p>
     `;
     // console.log(link);
-    mail.sendEmail(value.email,'Please complete your registration here',html);
+    await mail.sendEmail(value.email,'Please complete your registration here',html);
     // console.log('mail send');
     return res.status(200).json({message:`Thank you, Please check your email : ${value.email} to complete the registration.`});
   }
