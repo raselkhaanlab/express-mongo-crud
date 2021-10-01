@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./../includes/head.ejs") -%>
+    <style>
+        .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+        }
+    </style>
+</head>
+<body style="background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);">
+    <div class="container">
+            <% 
+                let errors = {};
+                if(messages.errors) {
+                    errors = JSON.parse(messages.errors);
+                }
+                console.log(errors);
+            %>
+            <%- include("./../includes/flash.ejs") -%>
+            <div class="text-center my-4">
+                <h4>
+                    Hi, <%= payload.first_name+' '+ payload.last_name %>
+                </h4>
+                <em>
+                    You are just one step behind to be our valueable member.
+                </em>
+                <br>
+                <em>
+                    we are waiting for congratulating you. please complete the step below now.
+                    Thanks a lot.
+                </em>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; width:100%;">
+                <div class="card card-outline-primary">
+                    <div class="card-header">
+                        <h6>Complete your registration now!</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-12">
+                            <form id='registration-form-from-mail' method="POST">
+                                <div class="form-group">
+                                    <label for="first_name">First name</label>
+                                    <input name="first_name"  value="<%=payload.first_name %>" type="text" class="form-control <%= errors.first_name?'is-invalid':'' %>" id="first_name" placeholder="enter first name">
+                                    <div class="invalid-feedback">
+                                        <%= errors.first_name %>
+                                    </div>
+                                    <span class="form-text small text-muted">
+                                        <em>you can change your frist name here.</em>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name">Last name</label>
+                                    <input name="last_name" value="<%=payload.last_name %>" type="text" class="form-control <%= errors.last_name?'is-invalid':'' %>" id="last_name" placeholder="enter last name">
+                                    <div class="invalid-feedback">
+                                        <%= errors.last_name %>
+                                    </div>
+                                    <span class="form-text small text-muted">
+                                        <em>you can change your last name here.</em>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile_number">Moblie number</label>
+                                    <input name="mobile_number" value="<%=payload.mobile_number %>" type="text" class="form-control <%= errors.mobile_number?'is-invalid':'' %>" id="mobile_number" placeholder="enter mobile number">
+                                    <div class="invalid-feedback">
+                                        <%= errors.mobile_number %>
+                                    </div>
+                                    <span class="form-text small text-muted">
+                                        <em>you can change the moblie number. but remember mobile number is unique</em>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input readonly value="<%=payload.email %>" type="text" class="form-control  <%= errors.email?'is-invalid':'' %>" id="email" placeholder="enter email">
+                                    <div class="invalid-feedback">
+                                        <%= errors.email %>
+                                    </div>
+                                    <span class="form-text small text-muted">
+                                        <em>you email for registration</em>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input name="password"  type="password" class="form-control <%= errors.password?'is-invalid':'' %>" id="password" placeholder="enter password">
+                                    <div class="invalid-feedback">
+                                        <%= errors.password %>
+                                    </div>
+                                    <span class="form-text small text-muted">
+                                        <em>please choose a strong password for better security</em>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password"> Confirm password</label>
+                                    <input name="confirm_password"  type="password" class="form-control  <%= errors.confirm_password?'is-invalid':'' %>" id="confirm-password" placeholder="enter confirm password">
+                                    <div class="invalid-feedback">
+                                        <%= errors.confirm_password %>
+                                    </div>
+                                    <span class="form-text small text-muted">
+                                        <em>confirm password must be same as password</em>
+                                    </span>
+                                </div>
+                                <button type="submit" class="btn btn-primary float-right">Sign up!</button>
+                                <a href="/">Login</a>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        <%- include('./../includes/footer.ejs') -%>
+    </div>
+    
+    <%- include('./../includes/footerJs.ejs') -%>
+    <script src="/js/home.js"></script>
+</body>
+</html>

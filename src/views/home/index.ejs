@@ -11,7 +11,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); height: 100vh;">
     <div class="container">
         <div class="text-center">
             <%- include("./../includes/flash.ejs") -%>
@@ -23,21 +23,29 @@
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input  name="password" type="password" id="inputPassword" class="form-control" value="<%= password %>" placeholder="Password" required="">
                 <div class="checkbox d-flex justify-content-end">
-                  <label >
-                    <input  type="checkbox" name="remember_me"> Remember me
+                  <label class="mt-1">
+                    <input  type="checkbox" style="outline: none; border-radius: 2px;" name="remember_me"> Remember me
                   </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#registration-modal">
-                    Don't have a account 
+               
+                <button type="button" class="btn btn-link text-light" data-toggle="modal" data-target="#forget-password-modal">
+                    Forget password?
                 </button>
+                    <button type="button" class="btn btn-link text-light" data-toggle="modal" data-target="#registration-modal">
+                        Don't have a account? register here!
+                    </button>
+               
+                
               </form> 
         </div>
         <%- include('./partials/registration.modal.ejs') -%>
+        <%- include('./partials/forget-password.modal.ejs') %>
+        <%- include("./partials/enter-registration-email.modal.ejs") %>
         <%- include('./../includes/footer.ejs') -%>
     </div>
     
     <%- include('./../includes/footerJs.ejs') -%>
-    <script src="/js/registration.js"></script>
+    <script src="/js/home.js"></script>
 </body>
 </html>

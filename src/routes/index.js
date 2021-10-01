@@ -7,6 +7,13 @@ const authMiddleware = require('./../modules/auth/auth.middleware');
 
 //==== application routing =====
 exports.init= (app)=> {
+    app.use((req,res,next)=>{
+        console.log({
+            url:req.originalUrl,
+            method:req.method
+        });
+        return next();
+    })
     app.use('/api/v1.0/products', productRoute);
     app.use('/auth',authRoute);
     app.use('/users',userRoute);

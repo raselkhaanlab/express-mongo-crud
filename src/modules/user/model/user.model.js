@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+
+
 const userSchema = new mongoose.Schema({
     first_name:{
         type:String,
@@ -31,28 +32,6 @@ const userSchema = new mongoose.Schema({
   },
   {timestamps:true}
   );
-
-function passwordBcryptHandler(next) {
-    const self = this;
-    const password = self.password;
-    self.password = bcrypt.hashSync(password, 8);
-    next();  
-}
-function passwordBcryptForUpdateHandler(next) {
-    const data = this.getUpdate();
-    const password = data.password;
-    data.password = bcrypt.hashSync(password, 8);
-    this.update({}, data).exec()
-    next(); 
-}
-
-
-//hasing password before save or update
-userSchema.pre("save", passwordBcryptHandler);
-userSchema.pre('updateOne',passwordBcryptForUpdateHandler);
-userSchema.pre("updateMany",passwordBcryptForUpdateHandler);
-userSchema.pre("update",passwordBcryptForUpdateHandler );
-
 
 const userModel = mongoose.model('user',userSchema);
 

@@ -1,0 +1,31 @@
+<!-- enter registration email -->
+<div class="modal fade" id="enter-registration-email-modal" tabindex="-1" role="dialog" aria-labelledby="enter-registration-email" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-success" id="enter-registration-email-title">Registration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id='enter-registration-email-form'>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" type="text" class="form-control" id="email" placeholder="enter email">
+                <div class="invalid-feedback">
+                </div>
+                <span class="form-text small text-muted">
+                    <em>please enter a valid email address,other wise you can not complete your registration process</em>
+                    <em>A mail will be send to your provided email for further process</em>
+                </span>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="enter-registration-email-btn">Send </button>
+        </div>
+        </div>
+    </div>
+    </div>
