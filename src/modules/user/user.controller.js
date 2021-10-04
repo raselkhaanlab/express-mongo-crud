@@ -1,9 +1,11 @@
   const mongoose = require('mongoose');
+  const generator = require('generate-password');
   const userModel = require('./model/user.model');
   const bcrypt = require('bcryptjs');
   const conf = require('../../config');
   const {Mail} = require('./../../common/mail/nodemailer');
   const {validationResult} = require("express-validator");
+  const {expressValidatorErrFormatter:errFormatter} = require('./../../common/utils/express-validator-error-formatter')
   
   exports.list = async (req,res,next) =>{
     try{
@@ -14,15 +16,23 @@
     }
     catch(e){next(e)}
   };
+  exports.listView = async (req,res,next) =>{
+    try{
+      return res.render("user");
+    }
+    catch(e){next(e)}
+  };
 
   exports.get = async (req,res,next) =>{
     try{
+      // console.log('call');
       const id = req.params.id;
       const isValidId=mongoose.isValidObjectId(id);
       if(!isValidId) {
         return res.status(400).json({errors:`${id} is not a valid id` });
       }
       const data = await userModel.findById(id,{__v:0});
+      // console.log(data);
       if(data) return res.json(data);
       return res.status(404).json();
     }
@@ -58,8 +68,15 @@
       if(!isValidId) {
         return res.status(400).json({errors:`${id} is not a valid id` })
       }
-      
+      const errors = validationResult(req);
+      if(!errors.isEmpty()) {
+        const formattedErr = errFormatter(errors);
+        // console.log(formattedErr);
+        console.log(formattedErr);
+        return res.status(400).json({errors:formattedErr});
+      }
       const data = await userModel.findByIdAndUpdate(id,{$set:{...req.body}},{new:true});
+      console.log(data);
       if(data) {
         const {__v,...modData} = data._doc;
         return res.json(modData);
@@ -74,6 +91,11 @@
   exports.delete = async (req,res,next) =>{
     try{
       const id = req.params.id;
+      const userId = req.session.user._id;
+      // console.log(userId,id);
+      if(id==userId) {
+        return res.status(400).json({errors:`sorry!trying to delete own account` });
+      }
       const isValidId=mongoose.isValidObjectId(id);
       if(!isValidId) {
         return res.status(400).json({errors:`${id} is not a valid id` })
@@ -86,8 +108,8 @@
       
     }
     catch(e){
-      console.log(e);
-      next(e);
+      // console.log(e);
+      return next(e);
     }
   };
 
@@ -95,8 +117,34 @@
 
 exports.save = async (req,res,next) =>{
   try{
-    const user = new userModel({...req.body});
-  let data = await user.save();
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      const formattedErr = errFormatter(errors);
+      // console.log(formattedErr);
+      return res.status(400).json({errors:formattedErr});
+    }
+    const password = generator.generate({
+      length: 8,
+      numbers: true
+    });
+
+  const hashPassword =bcrypt.hashSync(password, 8); 
+  const user = new userModel({...req.body,password:hashPassword});
+  const email = req.body.email.trim();
+  const mail = new Mail();
+  const html = `
+    <h3> Welcome! to our world.</h3>
+    <h4>
+    Hi, ${req.body.first_name} ${req.body.last_name}
+    </h4>
+    <p>
+    A account is created for this email.
+    your password is <code>${password}</code>
+    You can change your password by log in.
+    </p>
+  `;
+  const sendSuccess=await mail.sendEmail(email,'Account create successfuly',html);
+  const data = await user.save();
   return res.status(201).json(data);
   }
   catch(e) {

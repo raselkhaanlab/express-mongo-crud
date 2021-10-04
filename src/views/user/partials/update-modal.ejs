@@ -1,0 +1,56 @@
+<!-- update modal -->
+<div class="modal fade" id="update-user-modal" tabindex="-2" role="dialog" aria-labelledby="update-user" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-success" id="update-user-modal-title">Update user</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <h4 class="text-success mx-auto" id="display-user-id"></h4>
+        <div class="modal-body">
+            <form id='update-user-form'>
+            <div class="form-group">
+                <label for="update_first_name">First name</label>
+                <input name="first_name" type="text" class="form-control" id="update_first_name" placeholder="enter first name">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="update_last_name">Last name</label>
+                <input name="last_name" type="text" class="form-control" id="update_last_name" placeholder="enter last name">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="update_mobile_number">Mobile number</label>
+                <input name="mobile_number" type="text"  class="form-control" id="update_mobile_number" placeholder="enter mobile number">
+                <div class="invalid-feedback">
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="update_email">email</label>
+                <input name="email" type="text"  class="form-control" id="update_email" placeholder="enter email">
+                <div class="invalid-feedback">
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="update_status">Status</label>
+                <select class="form-control" id="update_status" name="status">
+                  <option value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+            </div>
+            
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="user-update-btn">Save changes</button>
+        </div>
+        </div>
+    </div>
+</div>

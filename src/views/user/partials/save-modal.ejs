@@ -1,0 +1,47 @@
+<!-- add modal Modal -->
+<div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-labelledby="add-user" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-success" id="add-user-modal-title">Add New User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id='add-user-form'>
+            <div class="form-group">
+                <label for="add_first_name">First name</label>
+                <input name="first_name" type="text" class="form-control" id="add_first_name" placeholder="enter frist name">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="add_last_name">Last name</label>
+                <input name="last_name" type="text"  class="form-control" id="add_last_name" placeholder="enter last name">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="add_mobile_number">Moblie number</label>
+                <input name="mobile_number" type="text" class="form-control" id="add_mobile_number" placeholder="enter mobile number ">
+                <div class="invalid-feedback">
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="add_email">Email</label>
+                <input name="email" type="email" class="form-control" id="add_email" placeholder="enter mobile number ">
+                <div class="invalid-feedback">
+                   
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="user-save-btn">Save changes</button>
+        </div>
+        </div>
+    </div>
+    </div>

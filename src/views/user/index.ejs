@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include("./../includes/dashboard-head.ejs") -%>
+  </head>
+  <body>
+    <%- include('./../includes/nav.ejs') -%>
+    <%- include('./../includes/dashboard-sidebar.ejs') -%>
+    <div class="main-content">
+      <div class="container-fluid">
+        <nav aria-label="breadcrumb" class="my-1">
+          <ol class="breadcrumb bg-white w-100 d-flex justify-content-end">
+            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/users">Users</a></li>
+          </ol>
+        </nav>
+        <%- include ("./../includes/flash.ejs") -%>
+      <div class="add-button d-flex justify-content-end my-2">
+      <button type="button" class="btn btn-info mr-2" id="refresh-user"> refresh</button>
+          <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-user-modal">
+          Add new user
+      </button>
+      </div>
+      <!-- list  -->
+      <%- include('./partials/list') -%>
+      <!-- save modal -->
+      <%- include('./partials/save-modal') -%>
+      <!-- update modal -->
+      <%- include('./partials/update-modal') -%>      
+      </div>
+      <%- include('./../includes/footer') -%>
+    </div>
+    
+    <%- include('./../includes/dashboardFooterJs.ejs') -%>
+    <script src="/js/users.js"></script>
+  </body>
+</html>

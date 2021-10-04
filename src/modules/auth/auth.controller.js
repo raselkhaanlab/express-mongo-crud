@@ -8,7 +8,7 @@ const  {expressValidatorErrFormatter: errFormatter} = require('./../../common/ut
 
 exports.login=async(req,res,next) =>{
   try{
-    const user = await userModel.findOne({email:req.body.email}).select(['first_name','last_name','email','password']).exec();
+    const user = await userModel.findOne({email:req.body.email}).select(['first_name','last_name','email','password','mobile_number','status']).exec();
     
     if(!user) {
       req.flash('error','sorry! Incrrect email or password');
@@ -29,7 +29,15 @@ exports.login=async(req,res,next) =>{
     }
 
     req.session.isLogin = true;
-    req.session.user = user;
+
+    req.session.user = {
+      first_name:user.first_name,
+      last_name:user.last_name,
+      mobile_number:user.mobile_number,
+      email:user.email,
+      status:user.status
+    };
+   
     req.flash('success','Welcome! you are logged in.')
     return res.redirect('/dashboard');
   }
@@ -151,8 +159,16 @@ exports.registration = async(req,res,next)=>{
       
       const regenerate = utils.promisify(req.session.regenerate).bind(req.session);
       await regenerate();
+
       req.session.isLogin = true;
-      req.session.user = userData;
+      req.session.user = {
+        first_name:userData.first_name,
+        last_name:userData.last_name,
+        mobile_number:userData.mobile_number,
+        email:userData.email,
+        status:userData.status
+      };
+
 
       req.flash('success','Welcome! Registration completed and you are logged in now!')
       return res.redirect('/dashboard');
