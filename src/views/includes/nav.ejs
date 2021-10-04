@@ -1,7 +1,6 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">
-      <i class="far fa-grin-wink text-success fa-2x"></i>
-    </a>
+<nav class="navbar navbar-dark bg-gradient" id="topNav">
+   <div class="navbar-wrapper">
+    <div class="toggler" id="sidebar-toggler"> <i class="text-white fa fa-bars"></i></div>
     <div class="btn-group">
         <button type="button" style="background-color: transparent; color: inherit; border: 0; outline: none;" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= locals.user.first_name +' '+locals.user.last_name %>
@@ -12,4 +11,5 @@
           <form class="dropdown-item" action="/auth/logout" method="POST"> <button style="background: none; border: none; padding:0" type="submit"> Logout</button></form>
         </div>
       </div>
+   </div>
   </nav>

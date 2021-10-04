@@ -11,28 +11,19 @@
         <nav aria-label="breadcrumb" class="my-1">
           <ol class="breadcrumb bg-white w-100 d-flex justify-content-end">
             <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="/products">Products</a></li>
           </ol>
         </nav>
         <%- include ("./../includes/flash.ejs") -%>
-      <div class="add-button d-flex justify-content-end my-2">
-      <button type="button" class="btn btn-info mr-2" id="refresh"> refresh</button>
-          <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-product-modal">
-          Add new product
-      </button>
-      </div>
-      <!-- list  -->
-      <%- include('./partials/list') -%>
-      <!-- save modal -->
-      <%- include('./partials/save-modal') -%>
-      <!-- update modal -->
-      <%- include('./partials/update-modal') -%>      
+          <%- include('./partials/card.ejs') -%>
+          <br>
+          <br>
+          <%- include('./partials/chart.ejs') -%>
+          <br>
+          <%- include('./partials/datatable.ejs') -%>
       </div>
       <%- include('./../includes/footer') -%>
     </div>
     
     <%- include('./../includes/dashboardFooterJs.ejs') -%>
-    <script src="/js/products.js"></script>
   </body>
 </html>

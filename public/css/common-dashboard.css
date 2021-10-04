@@ -1,0 +1,152 @@
+body{
+    position: relative;
+    overflow-x: hidden;
+}
+#topNav {
+    top:0;
+    left:0;
+    position:sticky;
+    z-index: 1001;
+    width: 100vw;
+}
+.bg-card {
+    background-color:#fff;
+    box-shadow: 2px 2px 5px rgba(128,128,128,0.6);
+}
+.bg-light-dark {
+    background-color: rgba(140,140,140,1);
+    color:#fff;
+}
+#topNav .navbar-wrapper {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#topNav.bg-gradient {
+    background-image:linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    box-shadow: 0px 4px 6px 0px rgba(50, 50, 50, 0.75);
+}
+#topNav .navbar-wrapper .dropdown-menu {
+    margin-left: -3rem;
+    /* z-index: 1000; */
+}
+.sidebar {
+    z-index: 1000;
+    top:3.29rem;
+    left:0;
+    position: fixed;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 220px;
+    background-image:linear-gradient(to bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    box-shadow: 4px 0px 6px 0px rgba(50, 50, 50, 0.55);
+    transition: all 0.5s;
+}
+.sidebar.active {
+    width: 70px;
+}
+
+ #sidebar-toggler {
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    font-size: 1.5rem;
+}
+.sidebar.active #sidebar-toggler {
+    text-align: center;
+}
+.sidebar .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 90px;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    border-bottom:1px solid white;
+    padding-left:20px;
+}
+.sidebar.active .sidebar-header {
+    padding: 15px;
+}
+
+.sidebar .sidebar-menu {
+    color: #fff;
+    line-height: 3rem;
+    /* border:1px solid red; */
+}
+.sidebar .sidebar-menu ul {
+    width: 100%;
+    list-style-type: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0;
+}
+
+.sidebar .sidebar-menu ul li:hover {
+    width: 100%;
+    background-color: #fff;
+}
+.sidebar .sidebar-menu ul li:hover a {
+    text-decoration: none;
+    color: #000;
+}
+.sidebar .sidebar-menu ul li a  {
+    color: #fff;
+    padding-left: 30px;
+}
+.sidebar .sidebar-menu ul li a span {
+    padding-left: 12px;
+}
+.sidebar.active .sidebar-menu ul li a {
+padding-left: 24px;
+}
+.sidebar.active .sidebar-menu ul li a span {
+    display: none;
+}
+.sidebar .sidebar-header .brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border:1px solid white;
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+.sidebar.active .sidebar-header .brand-logo {
+    height: 42px;
+}
+.sidebar .sidebar-header .brand-logo i {
+    text-align: center; 
+    padding: 4px 7px;
+}
+.sidebar .sidebar-header .brand-logo .brand-logo-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sidebar .sidebar-header .brand-text{
+    padding: 0 15px;
+    word-wrap:break-word;
+    /* display: block; */
+}
+.sidebar.active .sidebar-header .brand-text{
+   display: none;
+   padding: 0;
+}
+.main-content {
+    margin-left: 230px;
+    width: clac(100%-230px);
+    word-wrap: break-word;
+    transition: all 0.5s;
+}
+.sidebar.active ~ .main-content {
+    margin-left: 70px;
+    width: calc(100%-70px);
+}

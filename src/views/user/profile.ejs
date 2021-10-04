@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <%- include('./../includes/head.ejs') -%>
+   <%- include('./../includes/dashboard-head.ejs') -%>
 </head>
 <body>
-   <div class="container">
-       <%- include("./../includes/nav.ejs") -%>
-       <nav aria-label="breadcrumb" class="my-1">
-        <ol class="breadcrumb bg-white w-100 d-flex justify-content-end">
-          <li class="breadcrumb-item"><a href="/products">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="/users/profile">profile</a></li>
-        </ol>
-      </nav>
-      <%- include ("./../includes/flash.ejs") -%>
-     <!-- form card change password -->
-     <div class="card card-outline-secondary">
-        <div class="card-header bg-dark">
-            <h3 class="mb-0 text-success">Profile</h3>
-        </div>
-        <div class="card-body d-flex justify-content-center">
-            <div class="col-md-8">
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td>First name </td>
-                            <td> <%= userProfile.first_name %></td>
-                        </tr>
-                        <tr>
-                            <td>Last name </td>
-                            <td> <%= userProfile.last_name %></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td> <%= userProfile.email %></td>
-                        </tr>
-                        <tr>
-                            <td>Mobile number</td>
-                            <td> <%= userProfile.mobile_number %></td>
-                        </tr>
-                        <tr>
-                            <td>Status</td>
-                            <td> <%= userProfile.status?"Active":"Inactive" %></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- /form card change password -->
-    <%- include("./../includes/footer.ejs") -%>
-   </div> 
-   <%- include("./../includes/footerJs.ejs") -%>
+    <%- include("./../includes/nav.ejs") -%>
+    <%- include('./../includes/dashboard-sidebar.ejs') %>
+   <div class="main-content">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb" class="my-1">
+         <ol class="breadcrumb bg-white w-100 d-flex justify-content-end">
+           <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+           <li class="breadcrumb-item"><a href="/users/profile">profile</a></li>
+         </ol>
+       </nav>
+       <%- include ("./../includes/flash.ejs") -%>
+      <!-- form card change password -->
+      <div class="card card-outline-secondary">
+         <div class="card-header bg-light-dark">
+             <h3 class="mb-0">Profile</h3>
+         </div>
+         <div class="card-body d-flex justify-content-center">
+             <div class="col-md-8 table-responsive">
+                 <table class="table table-borderless">
+                     <tbody>
+                         <tr>
+                             <td>First name </td>
+                             <td> <%= userProfile.first_name %></td>
+                         </tr>
+                         <tr>
+                             <td>Last name </td>
+                             <td> <%= userProfile.last_name %></td>
+                         </tr>
+                         <tr>
+                             <td>Email</td>
+                             <td> <%= userProfile.email %></td>
+                         </tr>
+                         <tr>
+                             <td>Mobile number</td>
+                             <td> <%= userProfile.mobile_number %></td>
+                         </tr>
+                         <tr>
+                             <td>Status</td>
+                             <td> <%= userProfile.status?"Active":"Inactive" %></td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+     </div>
+     <!-- /form card change password -->
+     <%- include("./../includes/footer.ejs") -%>
+    </div> 
+   </div>
+   <%- include("./../includes/dashboardFooterJs.ejs") -%>
 </body>
 </html>

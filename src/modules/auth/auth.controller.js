@@ -31,7 +31,7 @@ exports.login=async(req,res,next) =>{
     req.session.isLogin = true;
     req.session.user = user;
     req.flash('success','Welcome! you are logged in.')
-    return res.redirect('/products');
+    return res.redirect('/dashboard');
   }
   catch(e) {
     return next(e);
@@ -155,7 +155,7 @@ exports.registration = async(req,res,next)=>{
       req.session.user = userData;
 
       req.flash('success','Welcome! Registration completed and you are logged in now!')
-      return res.redirect('/products');
+      return res.redirect('/dashboard');
       }
       catch(e) {
         next(e);

@@ -26,7 +26,7 @@ exports.isLogout = function (req,res,next) {
             return res.status(400).json({error:'BadRequest'});
         }
         else {
-            return res.redirect('/products');
+            return res.redirect('/dashboard');
         }
     }
     else {
